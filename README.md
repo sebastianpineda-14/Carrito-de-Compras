@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -40,3 +41,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 Proyecto realizado como parte de un reto técnico para HoyTrabajas.
 Stack: Next.js, API Routes, JS puro, sin DB.
 
+=======
+# Carrito-de-Compras
+Construir una API básica que gestione productos y un carrito de compras, junto con un frontend  que consuma esta API para permitir agregar y visualizar productos en el carrito. 
+>>>>>>> 3f182eb4eed7c546a561e7a55a9c5ad5a014d76a
