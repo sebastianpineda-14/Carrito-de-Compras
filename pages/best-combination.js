@@ -6,7 +6,6 @@ function findBestCombination(products, budget) {
   let best = [];
   let bestTotal = 0;
 
-  // Usamos un enfoque simple probando todas las combinaciones
   const totalComb = 1 << products.length; // 2^n combinaciones
   for (let mask = 0; mask < totalComb; mask++) {
     let current = [];
@@ -30,6 +29,8 @@ function findBestCombination(products, budget) {
 
 export default function BestCombinationPage() {
   const [budget, setBudget] = useState(150);
+  const [result, setResult] = useState([]);
+
   const products = [
     { id: 1, name: "Producto 1", price: 60 },
     { id: 2, name: "Producto 2", price: 100 },
@@ -37,27 +38,62 @@ export default function BestCombinationPage() {
     { id: 4, name: "Producto 4", price: 70 }
   ];
 
-  const result = findBestCombination(products, budget);
+  const totalAll = products.reduce((acc, p) => acc + p.price, 0);
+
+  const handleCalculate = (e) => {
+    e.preventDefault();
+
+    // Si el presupuesto alcanza para todo, devolvemos todos los productos
+    if (budget >= totalAll) {
+      setResult(products);
+    } else {
+      const best = findBestCombination(products, budget);
+      setResult(best);
+    }
+  };
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
       <h1>Mejor combinación de productos</h1>
-      <p>
-        Presupuesto actual: <strong>${budget}</strong>
-      </p>
 
-      <ul>
-        {result.map((p) => (
-          <li key={p.id}>
-            {p.name} - ${p.price}
-          </li>
-        ))}
-      </ul>
+      <form onSubmit={handleCalculate} style={{ marginBottom: "20px" }}>
+        <label>
+          Presupuesto:
+          <input
+            type="number"
+            value={budget}
+            onChange={(e) => setBudget(Number(e.target.value))}
+            style={{ marginLeft: "10px", padding: "5px" }}
+          />
+        </label>
+        <button type="submit" style={{ marginLeft: "10px" }}>
+          Calcular
+        </button>
+      </form>
 
-      <p>
-        Total: $
-        {result.reduce((acc, p) => acc + p.price, 0)}
-      </p>
+      {result.length > 0 ? (
+        <div>
+          <h2>Productos seleccionados:</h2>
+          <ul>
+            {result.map((p) => (
+              <li key={p.id}>
+                {p.name} - ${p.price}
+              </li>
+            ))}
+          </ul>
+          <p>
+            Total: ${result.reduce((acc, p) => acc + p.price, 0)}
+          </p>
+
+          {budget >= totalAll && (
+            <p style={{ color: "green" }}>
+              ✔ Con este presupuesto puedes comprar todos los productos.
+            </p>
+          )}
+        </div>
+      ) : (
+        <p>Ingrese un presupuesto y calcule para ver resultados.</p>
+      )}
 
       <Link href="/">
         <button style={{ marginTop: "20px" }}>Volver a productos</button>
