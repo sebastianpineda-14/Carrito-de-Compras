@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 
+
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -43,6 +44,9 @@ export default function Home() {
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
       <Link href="/cart">
         <button style={{ marginBottom: "20px" }}>Ir al carrito</button>
+      </Link>
+      <Link href="/best-combination">
+        <button style={{ marginBottom: "20px" }}>Ir a mejor combinación</button>
       </Link>
       <h1>Lista de Productos</h1>
       {products.map((p) => (

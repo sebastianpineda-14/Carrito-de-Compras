@@ -10,8 +10,8 @@ Además, incluye una función para encontrar la mejor combinación de productos 
 1. Clonar este repositorio:
 
    ```bash
-   git clone <https://github.com/sebastianpineda-14/Carrito-de-Compras>
-   cd prueba-tecnica
+   git clone https://github.com/sebastianpineda-14/Carrito-de-Compras
+   cd Carrito-de-Compras
 
 
 Instalar dependencias:
