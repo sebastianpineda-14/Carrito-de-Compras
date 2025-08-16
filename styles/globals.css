@@ -1,32 +1,86 @@
+/* Estilos globales */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f3f4f6, #e0e7ff);
   margin: 0;
   padding: 20px;
+  color: #111827;
 }
 
+/* Contenedor general */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #ffffffcc; /* blanco con leve transparencia */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
 h1, h2 {
-  color: #333;
+  color: #1f2937;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
 }
 
+/* Botones */
 button {
-  background-color: #0070f3;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
   color: white;
   border: none;
-  padding: 6px 12px;
+  padding: 10px 18px;
+  margin-top: 8px;
   margin-left: 10px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #005bb5;
+  background: linear-gradient(90deg, #1d4ed8, #2563eb);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
 }
 
+/* Tarjetas de producto */
 .product {
   background: white;
-  border: 1px solid #ddd;
-  padding: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.product span {
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Listados */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #fff;
+  border: 1px solid #e5e7eb;
   margin-bottom: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }

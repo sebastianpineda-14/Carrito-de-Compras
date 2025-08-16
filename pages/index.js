@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-
-
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -40,40 +38,54 @@ export default function Home() {
       .catch(err => console.error("Error al cargar carrito", err));
   };
 
+  // ✅ Función para reiniciar carrito
+  const resetCart = () => {
+    fetch("/api/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ action: "reset" }) // <-- indicamos acción "reset"
+    })
+      .then(res => res.json())
+      .then(() => {
+        setCart([]);
+        console.log("Carrito reiniciado");
+      })
+      .catch(err => console.error("Error al reiniciar el carrito", err));
+  };
+
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <Link href="/cart">
-        <button style={{ marginBottom: "20px" }}>Ir al carrito</button>
-      </Link>
-      <Link href="/best-combination">
-        <button style={{ marginBottom: "20px" }}>Ir a mejor combinación</button>
-      </Link>
+    <div className="container">
+      <div style={{ marginBottom: "20px" }}>
+        <Link href="/cart">
+          <button>Ir al carrito</button>
+        </Link>
+        <Link href="/best-combination">
+          <button>Ir a mejor combinación</button>
+        </Link>
+      </div>
+
       <h1>Lista de Productos</h1>
       {products.map((p) => (
-        <div key={p.id} style={{ marginBottom: "10px" }}>
+        <div key={p.id} className="product">
           <span>{p.name} - ${p.price}</span>
-          <button 
-            onClick={() => addToCart(p.id)} 
-            style={{ marginLeft: "10px" }}
-          >
+          <button onClick={() => addToCart(p.id)}>
             Agregar al carrito
           </button>
         </div>
       ))}
 
-      <hr />
-
       <h2>Carrito</h2>
       <button onClick={viewCart}>Ver carrito</button>
+      {/* ✅ Botón nuevo para reiniciar */}
+      <button onClick={resetCart}>Reiniciar carrito</button>
+      
       <ul>
         {cart.map((item, index) => (
           <li key={index}>{item.name} - ${item.price}</li>
         ))}
       </ul>
     </div>
-    
   );
-  <Link href="/cart">
-    <button style={{ marginBottom: "20px" }}>Ir al carrito</button>
-  </Link>
 }
