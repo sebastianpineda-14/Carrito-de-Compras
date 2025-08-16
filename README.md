@@ -1,47 +1,69 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Prueba Técnica — API y Carrito de Compras
 
-## Getting Started
+Este proyecto implementa una API básica y un frontend en **Next.js** para gestionar productos y un carrito de compras.  
+Además, incluye una función para encontrar la mejor combinación de productos bajo un presupuesto máximo.
 
-First, run the development server:
+---
 
-```bash
+## 🚀 Instrucciones de instalación y ejecución
+
+1. Clonar este repositorio:
+
+   ```bash
+   git clone <https://github.com/sebastianpineda-14/Carrito-de-Compras>
+   cd prueba-tecnica
+
+
+Instalar dependencias:
+
+npm install
+
+
+Ejecutar en modo desarrollo:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
-# Prueba Técnica — API y Carrito
-Proyecto realizado como parte de un reto técnico para HoyTrabajas.
-Stack: Next.js, API Routes, JS puro, sin DB.
+Abrir en el navegador:
 
-=======
-# Carrito-de-Compras
-Construir una API básica que gestione productos y un carrito de compras, junto con un frontend  que consuma esta API para permitir agregar y visualizar productos en el carrito. 
->>>>>>> 3f182eb4eed7c546a561e7a55a9c5ad5a014d76a
+👉 http://localhost:3000
+
+
+📌 Breve descripción de la solución
+
+La solución se divide en tres partes, de acuerdo con lo solicitado en la prueba:
+
+1. Backend (API)
+
+/api/products: devuelve una lista estática de productos.
+
+/api/cart: permite agregar productos al carrito con POST y consultar el carrito con GET.
+
+Los datos se mantienen en memoria (no hay base de datos).
+
+
+2. Frontend
+
+Página principal (/): muestra la lista de productos y permite agregarlos al carrito.
+
+Página del carrito (/cart): muestra los productos seleccionados.
+
+Página de mejor combinación (/best-combination): utiliza la lógica de presupuesto para mostrar los productos que maximizan el valor sin exceder un monto dado.
+
+Estilos: se incluyó un CSS global sencillo para dar formato a los elementos.
+
+
+3. Lógica adicional
+
+Implementación de la función findBestCombination(products, budget) que, dado un presupuesto, encuentra la combinación de productos con el mayor valor posible sin excederlo.
+
+Esta lógica se muestra en la página /best-combination.
+
+📖 Notas
+
+El carrito se reinicia cada vez que se reinicia el servidor, ya que no hay persistencia en base de datos.
+
+No se incluyó autenticación ni manejo de stock, tal como lo indicaba el enunciado.
+
+
+---
